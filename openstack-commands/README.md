@@ -39,7 +39,7 @@ export PUBLIC_NET_END=${IP_OCTET}.254
 export DNS_SERVER=192.168.1.2
 ```
 
-**Create public netowork**
+**Create public network**
 ```
 openstack network create --external --provider-physical-network datacentre --provider-network-type flat public
 openstack subnet create public-net \
