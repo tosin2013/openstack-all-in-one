@@ -11,7 +11,7 @@ This repo will install OpenStack 16.1 All-In-One on a single node. This repo wil
 
 * Two ethernet Ports
     * First interface used for general connectivity.
-    * Second interface used for the OpenStack services. This secondary interface needs to be connected to a seperate router. 
+    * Second interface used for the OpenStack services. This secondary interface needs to be connected to a separate router. 
         * gl-inet is an example router 
         * a small 5 port router is another alternative.
 * Your system must have at least 4 CPUs, 8GB RAM, and 30GB disk space.
