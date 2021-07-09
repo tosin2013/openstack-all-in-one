@@ -44,7 +44,7 @@ Openstack Configuration
     * ![volume-quota](https://user-images.githubusercontent.com/1975599/125079790-03e33100-e092-11eb-90de-6c6e46017a34.png)
   
 
-**Create OpenShift cluster Flavor**
+**Create OpenShift cluster flavor**
 ```
 cd openstack-all-in-one/
 openstack-commands/openstack-flavors.sh
@@ -122,10 +122,15 @@ Post Step
 
 **Get port info**
 ```
+openstack port list
 openstack port show <cluster_name>-<cluster_ID>-ingress-port
 ```
 
+
 **Attach the port to the IP address**
 ```
+openstack floating ip list
+PORTNAME="<cluster_name>-<cluster_ID>-ingress-port"
+PORT_ID=$(openstack port list | grep ${PORTNAME} | awk '{print $2}')
 openstack floating ip set --port <ingress_port_ID> <apps_FIP>
 ```

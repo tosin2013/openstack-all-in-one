@@ -36,7 +36,7 @@ export PUBLIC_NETWORK_CIDR=${IP_OCTET}.0/24
 export PRIVATE_NETWORK_CIDR=192.168.100.0/24
 export PUBLIC_NET_START=${IP_OCTET}.3
 export PUBLIC_NET_END=${IP_OCTET}.254
-export DNS_SERVER=10.0.1.239
+export DNS_SERVER=192.168.1.2
 ```
 
 **Create public netowork**
