@@ -30,7 +30,7 @@ ssh root@ipaddress
 
 **add stack user**
 ```
-curl -OL http://gitea.tosins-lab.com:3000/tosin/openstack-all-in-one/raw/branch/master/setup-stack.sh
+curl -OL https://raw.githubusercontent.com/tosin2013/openstack-all-in-one/main/setup-stack.sh
 chmod +x setup-stack.sh
 ./setup-stack.sh
 exit
