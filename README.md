@@ -80,7 +80,9 @@ git clone https://github.com/tosin2013/openstack-all-in-one.git
 ## If git is not installed run the following
 
 ```
-
+curl -OL https://raw.githubusercontent.com/tosin2013/openstack-all-in-one/main/system-setup.sh
+chmod +x system-setup.sh
+./system-setup.sh
 ```
 
 **Clone OpenStack repo**
