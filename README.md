@@ -55,7 +55,6 @@ export POOL_ID=000000000000000000000
 EOF
 ```
 
-
 ## Run the following if git is already installed
 **Clone OpenStack repo**
 ```
@@ -102,15 +101,17 @@ git clone https://github.com/tosin2013/openstack-all-in-one.git
 ./openstack-all-in-one/configure-openstack-tripleo.sh
 ```
 
-**Deploy Openstack** 
+## Deploy Openstack
 ```
 $ tmux new-session -t openstack-install
 $ ./openstack-all-in-one/deploy-tripleo.sh
 ```
+
 **Access Openstack console**
 ```
 https://youripaddress
 ```
+
 **Get login info**
 ```
 $ ./openstack-all-in-one/openstack-commands/get-credentials.sh
