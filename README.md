@@ -1,5 +1,7 @@
 # OpenStack 16.1 all in one
 This repo will install OpenStack 16.1 All-In-One on a single node. This repo will also explain how to install OpenShift on top of the Openstack deployment.
+![main-page](https://user-images.githubusercontent.com/1975599/125079864-16f60100-e092-11eb-86b0-45808d1f9cfc.png)
+
 
 ## Requirements
 * RHEL 8.2
