@@ -129,8 +129,8 @@ openstack port show <cluster_name>-<cluster_ID>-ingress-port
 
 **Attach the port to the IP address**
 ```
-openstack floating ip list
-PORTNAME="<cluster_name>-<cluster_ID>-ingress-port"
-PORT_ID=$(openstack port list | grep ${PORTNAME} | awk '{print $2}')
-openstack floating ip set --port <ingress_port_ID> <apps_FIP>
+$ openstack floating ip list
+$ PORTNAME="<cluster_name>-<cluster_ID>-ingress-port"
+$ PORT_ID=$(openstack port list | grep ${PORTNAME} | awk '{print $2}')
+$ openstack floating ip set --port ${PORT_ID} <apps_FIP>
 ```

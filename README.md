@@ -55,11 +55,12 @@ export POOL_ID=000000000000000000000
 EOF
 ```
 
+
+## Run the following if git is already installed
 **Clone OpenStack repo**
 ```
 git clone https://github.com/tosin2013/openstack-all-in-one.git
 ```
-
 
 **Register system**
 ```
@@ -75,6 +76,19 @@ git clone https://github.com/tosin2013/openstack-all-in-one.git
 ```
 ./openstack-all-in-one/configure-tmux.sh
 ```
+
+## If git is not installed run the following
+
+```
+
+```
+
+**Clone OpenStack repo**
+```
+git clone https://github.com/tosin2013/openstack-all-in-one.git
+```
+
+## Configure settings for deployment
 
 **Configure Network**
 ```
