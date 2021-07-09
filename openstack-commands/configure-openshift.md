@@ -39,7 +39,10 @@ Openstack Configuration
 * `Click Admin`
 * `System->Defaults`
   * `Compute Quotas->Update Deafaults`
+    *![compute-quota](https://user-images.githubusercontent.com/1975599/125079750-fa59c900-e091-11eb-925f-59649d797125.png)
   * `Volume Quotas->Update Deafaults`
+    * ![volume-quota](https://user-images.githubusercontent.com/1975599/125079790-03e33100-e092-11eb-90de-6c6e46017a34.png)
+  
 
 **Create OpenShift cluster Flavor**
 ```
