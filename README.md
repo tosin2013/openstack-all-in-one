@@ -93,7 +93,7 @@ git clone https://github.com/tosin2013/openstack-all-in-one.git
 
 **Configure Network**
 ```
-./openstack-all-in-one/create-source.sh networkinterface
+./openstack-all-in-one/create-source.sh secondary_network_interface
 ```
 
 **Configure TripleO Parameters** 
