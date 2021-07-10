@@ -14,6 +14,7 @@ This repo will install OpenStack 16.1 All-In-One on a single node. This repo wil
     * Second interface used for the OpenStack services. This secondary interface needs to be connected to a separate router. 
         * gl-inet is an example router 
         * a small 5 port router is another alternative.
+        * The secondary router must also have access to the internet. 
 * Your system must have at least 4 CPUs, 8GB RAM, and 30GB disk space.
 * Your system must have at least 8 CPUs, 128GB RAM, and 1TB of external disk space for an OpenShift install.
 * Minimum of two external disks for Ceph
@@ -52,6 +53,10 @@ cat >$HOME/openstack-info<<EOF
 export RHEL_USER=username@redhat.com
 export RHEL_PASSWORD="Y0uRp@$$woRd"
 export POOL_ID=000000000000000000000
+export TIME_SERVER= 0.rhel.pool.ntp.org
+export PRIMARY_DNS_SERVER=192.168.1.2
+export SECONDARY_DNS_SERVER=1.1.1.1
+export SECONDARY_INTERFACE_NAME=eno2
 EOF
 ```
 
@@ -93,7 +98,7 @@ git clone https://github.com/tosin2013/openstack-all-in-one.git
 
 **Configure Network**
 ```
-./openstack-all-in-one/create-source.sh secondary_network_interface
+./openstack-all-in-one/create-source.sh  
 ```
 
 **Configure TripleO Parameters** 

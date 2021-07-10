@@ -1,10 +1,13 @@
 #!/bin/bash 
 #set -xe 
-if [ -z ${1} ];
+if [ -f $HOME/openstack-info ];
 then 
-  echo "Pass second interface"
-  echo "USAGE: $0 eno2"
-  exit 1
+    source  $HOME/openstack-info
+else
+    read -p "Enter secondary network etherface name to be used for OpenStack > " SECONDARY_INTERFACE_NAME
+    read -p "Enter time server > " TIME_SERVER
+    read -p "Enter primary DNS > " PRIMARY_DNS_SERVER
+    read -p "Enter secondary DNS > " SECONDARY_DNS_SERVER
 fi
 
 nextip(){
@@ -15,11 +18,16 @@ nextip(){
     echo "$NEXT_IP"
 }
 
+echo "Collecting IP for  $SECONDARY_INTERFACE_NAME"
+export CURRENT_IP=$(echo `ifconfig $SECONDARY_INTERFACE_NAME |awk '/inet/ {print $2}'| grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b"`)
+export IP_OCTET=$(echo ${CURRENT_IP} | cut -d"." -f1-3)
 
-export SECOND_IP=$(echo `ifconfig $1 |awk '/inet/ {print $2}'| grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b"`)
-export IP_OCTET=$(echo ${SECOND_IP} | cut -d"." -f1-3)
-export INTERFACE_NAME=${1}
-export CURRENT_IP=$(echo `ifconfig $INTERFACE_NAME |awk '/inet/ {print $2}'| grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b"`)
+if [ -z ${CURRENT_IP} ];
+then 
+  echo "Plese ensure Interface: $SECONDARY_INTERFACE_NAME is configured and active"
+  exit 1
+fi 
+
 if ping -c 1 ${CURRENT_IP} > /dev/null; 
 then
   echo "ping success"
@@ -28,14 +36,13 @@ else
 fi
 
 cat <<EOF > $HOME/network_info
-export IP=${SECOND_IP}
+export IP=${CURRENT_IP}
 export NETMASK=24
 export GATEWAY=${IP_OCTET}.1
-export VIP=$(nextip $SECOND_IP)
-export INTERFACE=${INTERFACE_NAME}
-export DNS_SERVER1=10.0.1.239
-export DNS_SERVER2=8.8.8.8
-export NTP_SERVER1=time1.google.com
+export INTERFACE=${SECONDARY_INTERFACE_NAME}
+export DNS_SERVER1=${PRIMARY_DNS_SERVER}
+export DNS_SERVER2=${SECONDARY_DNS_SERVER}
+export NTP_SERVER1=${TIME_SERVER}
 export IP_OCTET=${IP_OCTET}
 EOF
 
@@ -43,12 +50,14 @@ EOF
 cat $HOME/network_info
 source $HOME/network_info
 
-echo "testing vip"
-if ping -c 1 ${VIP} > /dev/null; 
-then
-  echo "ping success"
-  echo "Manually configure vip current VIP does not exist"
-  exit 1
-else 
-  echo "VIP does not exist contiuning installation"
-fi
+# Need to test vip in tripleo it currently has issues
+
+#echo "testing vip"
+#if ping -c 1 ${VIP} > /dev/null; 
+#then
+#  echo "ping success"
+#  echo "Manually configure vip current VIP does not exist"
+#  exit 1
+#else 
+#  echo "VIP does not exist contiuning installation"
+#fi
