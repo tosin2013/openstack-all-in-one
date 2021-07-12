@@ -1,6 +1,6 @@
 # OpenStack 16.1 all in one
 This repo will install OpenStack 16.1 All-In-One on a single node. This repo will also explain how to install OpenShift on top of the Openstack deployment.
-![OpenShift on OpenStack](https://user-images.githubusercontent.com/1975599/125313096-e8329180-e302-11eb-9983-804080b9ee4c.png)
+![OpenShift on OpenStack](https://user-images.githubusercontent.com/1975599/125313271-157f3f80-e303-11eb-8c30-429e9ea67b3f.png)
 
 ![main-page](https://user-images.githubusercontent.com/1975599/125079864-16f60100-e092-11eb-86b0-45808d1f9cfc.png)
 
