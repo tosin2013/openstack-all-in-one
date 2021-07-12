@@ -38,16 +38,24 @@ Openstack Configuration
 **Increase cluster Quota for project**
 * `Click Admin`
 * `System->Defaults`
-  * `Compute Quotas->Update Deafaults`
+  * `Compute Quotas->Update Defaults`
     *![compute-quota](https://user-images.githubusercontent.com/1975599/125079750-fa59c900-e091-11eb-925f-59649d797125.png)
-  * `Volume Quotas->Update Deafaults`
+  * `Volume Quotas->Update Defaults`
     * ![volume-quota](https://user-images.githubusercontent.com/1975599/125079790-03e33100-e092-11eb-90de-6c6e46017a34.png)
   
+`You can also disable quota using the commands below`
+```
+$ export OS_CLOUD=standalone
+
+$ openstack quota set --secgroups -1 --secgroup-rules -1 --cores -1 --ram -1 --gigabytes -1 admin
+
+$ openstack quota show admin
+```
 
 **Create OpenShift cluster flavor**
 ```
 cd openstack-all-in-one/
-openstack-commands/openstack-flavors.sh
+./openstack-commands/openstack-flavors.sh
 ```
 
 **Add swiftoperator permissions to project**
@@ -61,6 +69,10 @@ openstack role add --user <user> --project <project> swiftoperator
 * **Variables for public and private network**
 * **Create public netowork**
 * **Create router and set gateway**
+*The script below will configure your network for Openshift deployment.*
+```
+./openstack-commands/create-network-for-openshift.sh
+```
 
 **Check network endpoints**
 ```
