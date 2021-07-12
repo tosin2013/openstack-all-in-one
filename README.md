@@ -115,7 +115,7 @@ $ ./openstack-all-in-one/deploy-tripleo.sh
 
 **Access Openstack console**
 ```
-https://youripaddress
+http://youripaddress
 ```
 
 **Get login info**
