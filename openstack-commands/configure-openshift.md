@@ -68,7 +68,7 @@ openstack role add --user <user> --project <project> swiftoperator
 [OpenStack All-in-One Deployment notes](README.md)
 * **Variables for public and private network**
 * **Create public netowork**
-* **Create router and set gateway**
+* **Create router and set gateway**. 
 *The script below will configure your network for Openshift deployment.*
 ```
 ./openstack-commands/create-network-for-openshift.sh
