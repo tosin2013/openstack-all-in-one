@@ -120,7 +120,7 @@ INFO Install-Config created in: /home/stack/cluster
 **edit and backup install-config.yaml if necessary**
 ```
 vim cluster/install-config.yaml 
-cp cluster/install-config.yaml  $HOME/install-config.yaml 
+cp ~/cluster/install-config.yaml  $HOME/install-config.yaml 
 ```
 
 **Start OpenShift Install**
