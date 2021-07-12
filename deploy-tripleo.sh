@@ -10,7 +10,7 @@ fi
 
 echo "Check that ceph volume is removed from hard drives"
 RESULT=$(sudo vgdisplay | grep "VG Name" | grep ceph | awk '{print $3}')
-if [ ! -z ${RESULT} ];
+if [ ! -z "${RESULT}" ];
 then 
   sudo vgremove $(sudo vgdisplay | grep "VG Name" | grep ceph | awk '{print $3}')
 fi
