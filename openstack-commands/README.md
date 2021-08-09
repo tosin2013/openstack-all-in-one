@@ -21,7 +21,7 @@ openstack project create --description 'OpenShift' openshift --domain default
 
 **Configure DNS Zone if using designate**
 ```
-./openstack-all-in-one/openstack-commands/configure_dns_zone.sh
+./openstack-all-in-one/openstack-commands/configure_dns_zone.sh example.com
 ```
 
 **Add user to project**
