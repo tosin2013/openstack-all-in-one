@@ -6,6 +6,7 @@ then
 else
     read -p "Enter secondary network etherface name to be used for OpenStack > " SECONDARY_INTERFACE_NAME
     read -p "Enter time server > " TIME_SERVER
+    read -p "Would you like to use ${HOSTNAME} as your dns server for designate Y/N > " USE_DESIGNATE
     read -p "Enter primary DNS > " PRIMARY_DNS_SERVER
     read -p "Enter secondary DNS > " SECONDARY_DNS_SERVER
 fi
@@ -17,6 +18,13 @@ nextip(){
     NEXT_IP=$(printf '%d.%d.%d.%d\n' `echo $NEXT_IP_HEX | sed -r 's/(..)/0x\1 /g'`)
     echo "$NEXT_IP"
 }
+
+if [[ $USE_DESIGNATE  =~ ^[Yy]$ ]];
+then 
+  USE_DESIGNATE=true
+else 
+  USE_DESIGNATE=false
+fi 
 
 echo "Collecting IP for  $SECONDARY_INTERFACE_NAME"
 export CURRENT_IP=$(echo `ifconfig $SECONDARY_INTERFACE_NAME |awk '/inet/ {print $2}'| grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b"`)
@@ -44,6 +52,7 @@ export DNS_SERVER1=${PRIMARY_DNS_SERVER}
 export DNS_SERVER2=${SECONDARY_DNS_SERVER}
 export NTP_SERVER1=${TIME_SERVER}
 export IP_OCTET=${IP_OCTET}
+export USE_DESIGNATE=${USE_DESIGNATE}
 EOF
 
 

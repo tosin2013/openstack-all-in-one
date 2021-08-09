@@ -1,5 +1,6 @@
 # OpenStack 16.1 all in one
-This repo will install OpenStack 16.1 All-In-One on a single node. This repo will also explain how to install OpenShift on top of the Openstack deployment.
+This repo will install OpenStack 16.1 All-In-One on a single node. This repo will also explain how to install OpenShift on top of the Openstack deployment.![OpenShift on OpenStack](https://user-images.githubusercontent.com/1975599/125313449-3ba4df80-e303-11eb-8256-37a89821a521.png)
+
 ![main-page](https://user-images.githubusercontent.com/1975599/125079864-16f60100-e092-11eb-86b0-45808d1f9cfc.png)
 
 
@@ -57,6 +58,7 @@ export TIME_SERVER= 0.rhel.pool.ntp.org
 export PRIMARY_DNS_SERVER=192.168.1.2
 export SECONDARY_DNS_SERVER=1.1.1.1
 export SECONDARY_INTERFACE_NAME=eno2
+export USE_DESIGNATE=Y
 EOF
 ```
 
@@ -101,6 +103,11 @@ git clone https://github.com/tosin2013/openstack-all-in-one.git
 ./openstack-all-in-one/create-source.sh  
 ```
 
+**Configure Bind9 if using designate** 
+```
+./openstack-all-in-one/configure-bind9.sh
+```
+
 **Configure TripleO Parameters** 
 ```
 ./openstack-all-in-one/configure-openstack-tripleo.sh
@@ -114,7 +121,7 @@ $ ./openstack-all-in-one/deploy-tripleo.sh
 
 **Access Openstack console**
 ```
-https://youripaddress
+http://youripaddress
 ```
 
 **Get login info**
@@ -130,7 +137,7 @@ undercloud_admin_password: LoginPAssword
 **View Openstack Endpoints**
 ```
 $ export OS_CLOUD=standalone     
-$ openstack endpoint list 
+$ openstack endpoint list 
 +----------------------------------+-----------+--------------+--------------+---------+-----------+------------------------------------------------+
 | ID                               | Region    | Service Name | Service Type | Enabled | Interface | URL                                            |
 +----------------------------------+-----------+--------------+--------------+---------+-----------+------------------------------------------------+

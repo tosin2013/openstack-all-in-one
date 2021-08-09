@@ -59,8 +59,6 @@ sed -i 's/rhn_password/'${PASSWORD}'/' $HOME/containers-prepare-parameters.yaml
 source  $HOME/network_info
 drivecheck
 
-
-
 cat <<EOF > $HOME/ceph_parameters.yaml
 parameter_defaults:
   CephAnsibleDisksConfig:
@@ -106,4 +104,9 @@ parameter_defaults:
   NtpServer: $NTP_SERVER1
 EOF
 
-
+if [ $USE_DESIGNATE  == "true"  ];
+then 
+  sudo cp  /usr/share/openstack-tripleo-heat-templates/environments/designate-config.yaml ${HOME}/designate-config.yaml
+  sed -i 's/10.0.0.51/'$IP'/g' ${HOME}/designate-config.yaml
+  sed -i 's/172.17.0.251/127.0.0.1/g' ${HOME}/designate-config.yaml
+fi 

@@ -19,6 +19,11 @@ export OS_CLOUD=standalone
 openstack project create --description 'OpenShift' openshift --domain default
 ```
 
+**Configure DNS Zone if using designate**
+```
+./openstack-all-in-one/openstack-commands/configure_dns_zone.sh
+```
+
 **Add user to project**
 ```
 openstack user create --project openshift --password Ch4nG3m$ admin
@@ -36,10 +41,10 @@ export PUBLIC_NETWORK_CIDR=${IP_OCTET}.0/24
 export PRIVATE_NETWORK_CIDR=192.168.100.0/24
 export PUBLIC_NET_START=${IP_OCTET}.3
 export PUBLIC_NET_END=${IP_OCTET}.254
-export DNS_SERVER=192.168.1.2
+export DNS_SERVER=10.0.1.239
 ```
 
-**Create public network**
+**Create public netowork**
 ```
 openstack network create --external --provider-physical-network datacentre --provider-network-type flat public
 openstack subnet create public-net \
