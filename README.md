@@ -138,36 +138,45 @@ undercloud_admin_password: LoginPAssword
 ```
 $ export OS_CLOUD=standalone     
 $ openstack endpoint list 
-+----------------------------------+-----------+--------------+--------------+---------+-----------+------------------------------------------------+
-| ID                               | Region    | Service Name | Service Type | Enabled | Interface | URL                                            |
-+----------------------------------+-----------+--------------+--------------+---------+-----------+------------------------------------------------+
-| 071fc06d671a4bf192a3bad0db02ffed | regionOne | nova         | compute      | True    | public    | http://192.168.1.25:8774/v2.1                  |
-| 08769e8644ff472990bf1bc12398e5a1 | regionOne | swift        | object-store | True    | admin     | http://192.168.1.25:8080                       |
-| 143143b0145f42cbb8aa5ece132b19a2 | regionOne | neutron      | network      | True    | internal  | http://192.168.1.25:9696                       |
-| 14921eee2ca84f6ca0e19578bb4a8dbc | regionOne | nova         | compute      | True    | internal  | http://192.168.1.25:8774/v2.1                  |
-| 2974b712c4dc4a199700b9e171d9a4b2 | regionOne | placement    | placement    | True    | public    | http://192.168.1.25:8778/placement             |
-| 2ab138cbe8ea45db8279e46b21ef2903 | regionOne | placement    | placement    | True    | admin     | http://192.168.1.25:8778/placement             |
-| 2bfa0bd6f14340bbbaca6828666207d9 | regionOne | cinderv3     | volumev3     | True    | public    | http://192.168.1.25:8776/v3/%(tenant_id)s      |
-| 340e7a5c4583404e8861f3e0c49b2978 | regionOne | glance       | image        | True    | public    | http://192.168.1.25:9292                       |
-| 359370bb4c7d403daafa45b39e230c0e | regionOne | cinderv2     | volumev2     | True    | internal  | http://192.168.1.25:8776/v2/%(tenant_id)s      |
-| 42f81ae2003543768be7154bb3901463 | regionOne | swift        | object-store | True    | internal  | http://192.168.1.25:8080/v1/AUTH_%(tenant_id)s |
-| 45d38756abef4e0da5f2e8fc99fd97f4 | regionOne | keystone     | identity     | True    | admin     | http://192.168.1.25:35357                      |
-| 58d58e609ac54e1c81327344fcdc1f99 | regionOne | cinderv3     | volumev3     | True    | admin     | http://192.168.1.25:8776/v3/%(tenant_id)s      |
-| 64de4135c8604808954b5fc25c88dd77 | regionOne | placement    | placement    | True    | internal  | http://192.168.1.25:8778/placement             |
-| 70c6f629f9fe4832aa9324f9ecfd7b9e | regionOne | glance       | image        | True    | admin     | http://192.168.1.25:9292                       |
-| 87bc8cdd57334a159cceb2da79c1b9d8 | regionOne | keystone     | identity     | True    | public    | http://192.168.1.25:5000                       |
-| 8aeae5cb55c6441eb0f0c77787dcf408 | regionOne | cinderv2     | volumev2     | True    | admin     | http://192.168.1.25:8776/v2/%(tenant_id)s      |
-| 9aa54f77221b4fd080b02dcf5ad6e808 | regionOne | neutron      | network      | True    | admin     | http://192.168.1.25:9696                       |
-| ab27ac29110241d8b48dbb1222d9bf57 | regionOne | neutron      | network      | True    | public    | http://192.168.1.25:9696                       |
-| c16dc5ba55de4de9a74a85211bc025a0 | regionOne | keystone     | identity     | True    | internal  | http://192.168.1.25:5000                       |
-| c9165502edce4faa9c8a1006908260db | regionOne | cinderv2     | volumev2     | True    | public    | http://192.168.1.25:8776/v2/%(tenant_id)s      |
-| ce1056f7bdef46f4b03428f51507505c | regionOne | swift        | object-store | True    | public    | http://192.168.1.25:8080/v1/AUTH_%(tenant_id)s |
-| d7d066120ea34f2ca286320756d911a8 | regionOne | nova         | compute      | True    | admin     | http://192.168.1.25:8774/v2.1                  |
-| ddf95ef88f524230affd6efc7dad508c | regionOne | cinderv3     | volumev3     | True    | internal  | http://192.168.1.25:8776/v3/%(tenant_id)s      |
-| e9af20c2bc9a4e66abe1c51cef359830 | regionOne | glance       | image        | True    | internal  | http://192.168.1.25:9292                       |
-+----------------------------------+-----------+--------------+--------------+---------+-----------+------------------------------------------------+
++----------------------------------+-----------+--------------+--------------+---------+-----------+---------------------------------------------+
+| ID                               | Region    | Service Name | Service Type | Enabled | Interface | URL                                         |
++----------------------------------+-----------+--------------+--------------+---------+-----------+---------------------------------------------+
+| 1a37371d8162489aa9663f307244d693 | regionOne | cinderv3     | volumev3     | True    | internal  | http://192.168.1.20:8776/v3/%(tenant_id)s      |
+| 1ba6cba14ac84e1bab7bf99d3f3253ee | regionOne | glance       | image        | True    | admin     | http://192.168.1.20:9292                       |
+| 1bc0591585c74a5ba4c236de2fb8f42b | regionOne | keystone     | identity     | True    | public    | http://192.168.1.20:5000                       |
+| 1e350bb4bdde4b87b58e9906543899c7 | regionOne | swift        | object-store | True    | public    | http://192.168.1.20:8080/v1/AUTH_%(tenant_id)s |
+| 23a8bb1eff2f475cb707bdaba2604ca5 | regionOne | cinderv2     | volumev2     | True    | admin     | http://192.168.1.20:8776/v2/%(tenant_id)s      |
+| 269a7113e334450e9618481affff7b5d | regionOne | keystone     | identity     | True    | internal  | http://192.168.1.20:5000                       |
+| 315eee54bf6e41898e0efbb9ade81e2a | regionOne | cinderv2     | volumev2     | True    | internal  | http://192.168.1.20:8776/v2/%(tenant_id)s      |
+| 5ae5a368350044c4832c9ba74166da2a | regionOne | placement    | placement    | True    | public    | http://192.168.1.20:8778/placement             |
+| 5be24ab1851745c086162a59c4068615 | regionOne | cinderv2     | volumev2     | True    | public    | http://192.168.1.20:8776/v2/%(tenant_id)s      |
+| 60ae5e5904614b2e9818e99967907d26 | regionOne | nova         | compute      | True    | public    | http://192.168.1.20:8774/v2.1                  |
+| 6e430f0218ed4ef3a44465c70187ffbe | regionOne | cinderv3     | volumev3     | True    | public    | http://192.168.1.20:8776/v3/%(tenant_id)s      |
+| 7152512d8e534837a09cc3745fad8bbf | regionOne | designate    | dns          | True    | internal  | http://192.168.1.20:9001                       |
+| 7a282b48c1c54550b016cc1aa0ac1662 | regionOne | glance       | image        | True    | public    | http://192.168.1.20:9292                       |
+| 91978fb8860c4732b0829dca8695d669 | regionOne | nova         | compute      | True    | admin     | http://192.168.1.20:8774/v2.1                  |
+| 93f3e8f9c1364d3f8a9d9e626257d9f0 | regionOne | neutron      | network      | True    | admin     | http://192.168.1.20:9696                       |
+| 9587aba1f84a4882b4650866420b618d | regionOne | neutron      | network      | True    | public    | http://192.168.1.20:9696                       |
+| 959a3210294e4413af23d709276df0b3 | regionOne | designate    | dns          | True    | admin     | http://192.168.1.20:9001                       |
+| ae883c5511b54750b5364d62648749de | regionOne | glance       | image        | True    | internal  | http://192.168.1.20:9292                       |
+| af9945acc0644a3caca6b9b0a1afd4d7 | regionOne | keystone     | identity     | True    | admin     | http://192.168.1.20:35357                      |
+| b646c5fe9cfa4791b50688f6292aeef0 | regionOne | placement    | placement    | True    | admin     | http://192.168.1.20:8778/placement             |
+| bf205b8aded947d78c47087656dc599c | regionOne | neutron      | network      | True    | internal  | http://192.168.1.20:9696                       |
+| d21b5ba094384d19b11d3f7216b8ad4e | regionOne | designate    | dns          | True    | public    | http://192.168.1.20:9001                       |
+| d86e9f4607224b19bf3aebf18d531d21 | regionOne | cinderv3     | volumev3     | True    | admin     | http://192.168.1.20:8776/v3/%(tenant_id)s      |
+| da4cc7483bec4ddfaefbaf6342229f54 | regionOne | nova         | compute      | True    | internal  | http://192.168.1.20:8774/v2.1                  |
+| dd00effe7fa54e0085b9b091d7ab73d1 | regionOne | swift        | object-store | True    | internal  | http://192.168.1.20:8080/v1/AUTH_%(tenant_id)s |
+| fa0d25c6197e4f41a3f8d88f6f95d673 | regionOne | placement    | placement    | True    | internal  | http://192.168.1.20:8778/placement             |
+| ff192c431c5a4c21a66c88269a98c462 | regionOne | swift        | object-store | True    | admin     | http://192.168.1.20:8080                       |
++----------------------------------+-----------+--------------+--------------+---------+-----------+---------------------------------------------+
 
 ```
+## If you are using designate patch the rndc
+```
+```
+./openstack-all-in-one/patch_rndckey.sh
+```
+
 ## OpenStack All-in-One Deployment Tips
 [OpenStack All-in-One Deployment Tips](openstack-commands/README.md)
 
