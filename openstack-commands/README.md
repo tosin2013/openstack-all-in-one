@@ -24,6 +24,11 @@ openstack project create --description 'OpenShift' openshift --domain default
 ./openstack-all-in-one/openstack-commands/configure_dns_zone.sh example.com
 ```
 
+**Create RecordSets in this DNS Zone**
+```
+openstack recordset create --records '10.0.0.1' --type A example.com. www
+```
+
 **Add user to project**
 ```
 openstack user create --project openshift --password Ch4nG3m$ admin
