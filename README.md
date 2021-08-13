@@ -171,8 +171,8 @@ $ openstack endpoint list
 +----------------------------------+-----------+--------------+--------------+---------+-----------+---------------------------------------------+
 
 ```
-## If you are using designate patch the rndc
-```
+
+**If you are using designate patch the rndc**
 ```
 ./openstack-all-in-one/patch_rndckey.sh
 ```
