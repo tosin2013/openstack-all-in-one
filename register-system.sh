@@ -15,4 +15,4 @@ else
 
 fi
 
-sudo subscription-manager release --set=8.2
+sudo subscription-manager release --set=8.4

@@ -1,14 +1,14 @@
-# OpenStack 16.1 all in one
+# OpenStack 16.2 all in one
 This repo will install OpenStack 16.1 All-In-One on a single node. This repo will also explain how to install OpenShift on top of the Openstack deployment.![OpenShift on OpenStack](https://user-images.githubusercontent.com/1975599/125313449-3ba4df80-e303-11eb-8256-37a89821a521.png)
 
 ![main-page](https://user-images.githubusercontent.com/1975599/125079864-16f60100-e092-11eb-86b0-45808d1f9cfc.png)
 
 
 ## Requirements
-* RHEL 8.2
+* RHEL 8.4
     * [RED HAT ENTERPRISE LINUX
-    8.2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/8.2_release_notes/index)
-    * [Download](https://access.redhat.com/downloads/content/479/ver=/rhel---8/8.2/x86_64/product-software)
+    8.4](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/8.4_release_notes/index)
+    * [Download](https://access.redhat.com/downloads/content/479/ver=/rhel---8/8.4/x86_64/product-software)
 
 * Two ethernet Ports
     * First interface used for general connectivity.
@@ -54,7 +54,7 @@ cat >$HOME/openstack-info<<EOF
 export RHEL_USER=username@redhat.com
 export RHEL_PASSWORD="Y0uRp@$$woRd"
 export POOL_ID=000000000000000000000
-export TIME_SERVER= 0.rhel.pool.ntp.org
+export TIME_SERVER=0.rhel.pool.ntp.org
 export PRIMARY_DNS_SERVER=192.168.1.2
 export SECONDARY_DNS_SERVER=1.1.1.1
 export SECONDARY_INTERFACE_NAME=eno2
