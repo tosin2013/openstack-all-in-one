@@ -31,7 +31,7 @@ function checkfstab(){
 drivecheck
 sudo pvcreate ${DRIVES}
 sudo vgcreate vg_ceph_storage ${DRIVES}
-export VG_SIZE="$(sudo vgdisplay vg_ceph_storage | grep  'VG Size' | grep -oE  '[0-9]{3}.[0-9]{2} [G,T]iB')" #1.7T
+export VG_SIZE="$(sudo vgdisplay vg_ceph_storage | grep  'VG Size' | grep -oE  '[0-9]+.[0-9]+ [G,T]iB')" #1.7T
 GB='GiB'
 TB='TiB'
 REDUCE_DRIVE="10"
@@ -39,15 +39,15 @@ REDUCE_DRIVE="10"
 case $VG_SIZE in
 
   *"$GB"*)
-    NEWSIZE=$(echo $VG_SIZE | grep -oE [0-9]{3})
+    NEWSIZE=$(echo $VG_SIZE | grep -oE [0-9]+)
     REDUCE="$(($NEWSIZE-$REDUCE_DRIVE))"
     echo $REDUCE
     export SIZE=$( echo "${REDUCE}"G)
     echo "SIZE: ${SIZE}"
     ;;
   *"$TB"*)
-    NEWSIZE=$(echo $VG_SIZE | grep -oE [0-9]{3})
-    export SIZE=$( echo "${NEWSIZE}"T)
+    NEWSIZE=$(echo $VG_SIZE | grep -oE  '[0-9]+.[0-9]+ [G,T]iB' | sed 's/ //g')
+    export SIZE=$( echo "${NEWSIZE}")
     echo "SIZE: ${SIZE}"
     ;;
 esac

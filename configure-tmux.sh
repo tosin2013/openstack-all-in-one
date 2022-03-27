@@ -5,7 +5,7 @@ set -xe
 
 
 echo "configureing powerline"
-sudo pip3 install git+git://github.com/Lokaltog/powerline
+sudo pip3 install powerline-status
 
 sudo tee -a .bashrc > /dev/null <<EOT
 if [ -f `which powerline-daemon` ]; then
@@ -17,7 +17,7 @@ fi
 EOT
 
 
-echo "configureing tmux"
+echo "configuring tmux"
 git clone --recursive https://github.com/tony/tmux-config.git ~/.tmux
 ln -s ~/.tmux/.tmux.conf ~/.tmux.conf
 echo "source \"/usr/local/lib/python3.6/site-packages/powerline/bindings/tmux/powerline.conf"\" >> ~/.tmux.conf
