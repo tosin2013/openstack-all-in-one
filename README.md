@@ -108,6 +108,15 @@ git clone https://github.com/tosin2013/openstack-all-in-one.git
 ./openstack-all-in-one/configure-bind9.sh
 ```
 
+**Optional: Skip drives to be used with Ceph**
+> If you would like to skip drives that would be used with ceph create the file below
+```
+$ cat >$HOME/skipdirves<<EOF
+sda
+sdb
+EOF
+```
+
 **Configure TripleO Parameters** 
 ```
 ./openstack-all-in-one/configure-openstack-tripleo.sh

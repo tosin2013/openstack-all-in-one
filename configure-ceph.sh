@@ -2,11 +2,16 @@
 set -xe 
 
 function drivecheck(){
-  CHECK_DRIVE_COUNT=$(ls /dev/*sd* | grep -v sda | wc -l)
+  if [ ! -f  $HOME/skipdirves ];
+  then
+    echo "sda" >   $HOME/skipdirves
+  fi 
+  SKIPDRIVES=$(cat $HOME/skipdirves  | tr '\n' ' '  | xargs | sed 's/ /\\|/g')
+  CHECK_DRIVE_COUNT=$(ls /dev/*sd* | grep -v ''${SKIPDRIVES}'' | wc -l)
   if [ "$CHECK_DRIVE_COUNT" -gt 1 ];
   then 
     echo "more than one drive found"
-    export DRIVES=$(ls /dev/sd* | grep -v sda |  xargs)
+    export DRIVES=$(ls /dev/sd* | grep -v ''${SKIPDRIVES}'' |  xargs)
   elif [ "$CHECK_DRIVE_COUNT" -eq 0 ];
   then 
       echo "checking for nvme drives"
