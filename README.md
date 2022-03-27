@@ -10,7 +10,7 @@ This repo will install OpenStack 16.1 All-In-One on a single node. This repo wil
     8.4](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/8.4_release_notes/index)
     * [Download](https://access.redhat.com/downloads/content/479/ver=/rhel---8/8.4/x86_64/product-software)
 
-* Two ethernet Ports
+* Two ethernet Ports configured with static networks
     * First interface used for general connectivity.
     * Second interface used for the OpenStack services. This secondary interface needs to be connected to a separate router. 
         * gl-inet is an example router 
